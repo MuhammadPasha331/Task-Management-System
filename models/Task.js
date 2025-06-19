@@ -3,11 +3,13 @@ const taskSchema = new mongoose.Schema({
     Id : Number,
     title: { type: String, required: true},
     description: String,
+    assignedTo:{type: mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    },
     status: {type: String,
         enum: ['Pending','In Progress','Completed'],
-        default : 'Pending;'},
+        default : 'Pending'},
         DueDate: Date
 
     }, {timestamps: true});
-module.exports = mongooose.model('Task', taskSchema)
-;
+module.exports = mongoose.model('Task', taskSchema);
